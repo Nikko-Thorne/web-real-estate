@@ -2,7 +2,6 @@
 import HeroImage from "./HeroImage.astro";
 import Container from "../../../layouts/Container.astro";
 import ButtonAnimated from "../../ui/buttons/ButtonAnimated.astro";
-
 import ScrollButton from "../../ui/buttons/ScrollButton.astro";
 ---
 
@@ -21,20 +20,19 @@ import ScrollButton from "../../ui/buttons/ScrollButton.astro";
         <h1
           class="mb-3.5 w-full text-4xl font-normal leading-[1.2] tracking-wide md:mb-7 md:text-5xl 2xl:text-6xl"
         >
-          Nơi Hạnh Phúc <br />Ngập Tràn
+          Your Dream Home <br /> Awaits
         </h1>
         <p
           class="w-[85%] text-sm font-normal leading-relaxed tracking-normal text-opacity-90 md:text-base"
         >
-          Nơi nụ cười nở, hạnh phúc tươi sáng. Nơi nụ cười nở, hạnh phúc tươi
-          sáng. Nơi nụ cười nở, hạnh phúc tươi sáng.
+          Find your perfect place with Ruslan Shmidt, your trusted real estate partner. Experience a smooth, professional journey towards your dream property.
         </p>
         <div class="mt-6">
           <ButtonAnimated
-            hiddenText="xem đất"
-            onClick="location.href = '/tim-dat'"
+            hiddenText="explore properties"
+            onClick="location.href = '/explore-properties'"
           >
-            Tìm hiểu
+            Discover More
           </ButtonAnimated>
         </div>
       </div>
@@ -42,8 +40,8 @@ import ScrollButton from "../../ui/buttons/ScrollButton.astro";
 
     <ScrollButton
       id="scroll-btn"
-      ariaLabel="Go down to the land previews"
-      destinationElementId="land-previews"
+      ariaLabel="Scroll down to view property listings"
+      destinationElementId="property-listings"
       className="loaded-hero-button "
     />
   </div>

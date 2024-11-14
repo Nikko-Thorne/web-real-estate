@@ -1,6 +1,7 @@
 ---
 import Container from "../../layouts/Container.astro";
 import ButtonAnimated from "../ui/buttons/ButtonAnimated.astro";
+import ServiceAreas from "../ServiceAreas.jsx";
 ---
 
 <Container
@@ -9,11 +10,14 @@ import ButtonAnimated from "../ui/buttons/ButtonAnimated.astro";
   <h2
     class="max-w-[40ch] px-6 pb-3 pt-0 text-center font-light !leading-relaxed tracking-normal text-white md:text-xl xl:text-2xl"
   >
-    VietLand đã đưa công nghệ và tính minh bạch vào bất động sản
+    Discover Your Dream Home with Ruslan
   </h2>
   <div class="mt-4">
-    <ButtonAnimated hiddenText="xem đất" onClick="location.href = '/tim-dat'">
-      Tìm hiểu
+    <ButtonAnimated hiddenText="view properties" onClick="location.href = '/explore-properties'">
+      Learn More
     </ButtonAnimated>
+  </div>
+  <div class="mt-6">
+    <ServiceAreas /> 
   </div>
 </Container>

@@ -16,10 +16,10 @@ const currentPage = Astro.url.pathname;
 >
   <div
     class={`loaded-hero-logo flex-1 px-4 md:px-8  ${
-      currentPage === "/tim-dat" ? "lg:px-6" : "lg:px-16"
+      currentPage === "/property-search" ? "lg:px-6" : "lg:px-16"
     }`}
   >
-    <Logo companyTitle="VietLand" className="" />
+    <Logo companyTitle="Ruslan Shmidt" className="" />
   </div>
 
   <ul class="loaded-hero-links hidden flex-wrap gap-x-2 xl:flex">
@@ -34,18 +34,18 @@ const currentPage = Astro.url.pathname;
 
   <div
     class={`loaded-hero-buttons flex flex-1 items-center justify-end xl:px-16 ${
-      currentPage === "/tim-dat" ? "xl:px-6" : "xl:px-16"
+      currentPage === "/property-search" ? "xl:px-6" : "xl:px-16"
     }`}
   >
     <div class="hidden xl:block">
-      <ButtonSmall id="callback-form-btn">Liên hệ</ButtonSmall>
+      <ButtonSmall id="callback-form-btn">Contact Us</ButtonSmall>
     </div>
     <div class="hidden sm:block">
       <CallButton phone={COMPANY_PHONE_NUMBER} />
     </div>
     <div
       class={`relative ml-4 mr-4 flex flex-col items-center justify-center md:mr-8 lg:mr-16 xl:hidden ${
-        currentPage === "/tim-dat" ? "lg:mr-6" : "lg:mr-16 "
+        currentPage === "/property-search" ? "lg:mr-6" : "lg:mr-16 "
       }`}
     >
       <NavigationDropdown
@@ -81,27 +81,23 @@ const currentPage = Astro.url.pathname;
   ) as DropdownMenu;
   const scrollSection = document.querySelector(".main-content") as HTMLElement;
 
-  // Keep track of scroll position
+  // Track scroll position
   let isVisibleNavigationEl = true;
   const visibilityThresholdY = 300;
 
-  // Handle revealing of the navigation bar
+  // Show the navigation bar
   const showNavigationBar = async () => {
-    // Check if dropdown menu is open and close it before futher animations
     if (navigationDropdownEl.isOpen()) await navigationDropdownEl.hide();
 
-    // Trigger show animation, as defined in css
     navigationEl.setAttribute("scroll-hide", "false");
 
-    // Clear applyed styles after animation (otherwise transform(0) meddles with layout)
     setTimeout(() => {
       navigationEl.removeAttribute("scroll-hide");
     }, 550);
   };
 
-  // Handle hiding of navigation bar
+  // Hide the navigation bar
   const hideNavigationBar = () => {
-    // Trigger hide animation, as defined in css
     navigationEl.setAttribute("scroll-hide", "true");
   };
 
@@ -125,5 +121,5 @@ const currentPage = Astro.url.pathname;
     passive: true,
   });
 
-  // TODO: check performance and, if needed, apply throttling (interval proportional to distance from threshhold point)/ intersection observer to remove/add event listeners
+  // TODO: Check performance and, if needed, apply throttling (interval proportional to distance from threshold point) / intersection observer to remove/add event listeners
 </script>

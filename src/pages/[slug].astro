@@ -20,8 +20,7 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 
-let land: Land;
-land = Astro.props.land;
+const land: Land = Astro.props.land;
 
 const suggestedLands = land.suggestedLands
   ? await dataModel.getLandsBySlugs(land.suggestedLands)

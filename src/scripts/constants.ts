@@ -1,17 +1,17 @@
-export const COMPANY_NAME = "VietLand";
-export const COMPANY_PHONE_NUMBER = "+84(78)488-0685";
+export const COMPANY_NAME = "Ruslan Shmidt Real Estate";
+export const COMPANY_PHONE_NUMBER = "5099038443";
 
 export const navigationPages = [
   {
-    title: "Trang chủ",
+    title: "Home",
     href: "/",
   },
   {
-    title: "Tìm kiếm đất",
-    href: "/tim-dat",
+    title: "Property Search",
+    href: "/property-search",
   },
   {
-    title: "Về chúng tôi",
-    href: "/thong-tin",
+    title: "About Us",
+    href: "/about",
   },
 ];

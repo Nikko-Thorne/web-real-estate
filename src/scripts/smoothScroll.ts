@@ -3,7 +3,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import isMobileDevice from "../scripts/isMobileDevice";
 const isDev = import.meta.env.DEV;
 
-let locomotiveScroll: any;
+let locomotiveScroll: LocomotiveScroll | null = null;
 
 const initSmoothScroll = () => {
   // Skip if scroll is already instantiated

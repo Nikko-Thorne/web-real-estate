@@ -20,11 +20,9 @@ export const generateImageSrc = (
 export const generateImageSrcset = (url?: string, widths?: number[]) => {
   if (!url) return defaults.img;
 
-  if (!widths) {
-    widths = [400, 600, 800, 1000, 1200, 1400, 1600];
-  }
+  const adjustedWidths = widths || [400, 600, 800, 1000, 1200, 1400, 1600];
 
-  let srcset = widths
+  const srcset = adjustedWidths
     .map((size) => {
       return `${url}?fm=jpg&fl=progressive&fit=fill&w=${size}&h=${
         size * 0.75

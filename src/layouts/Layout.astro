@@ -8,6 +8,7 @@ import Popup from "../components/modals/Popup.astro";
 import Alert from "../components/ui/alerts/Alert.astro";
 import LoadingScreen from "../components/loading-page-animations/loading-screen/LoadingScreen.astro";
 import LoadingPageTransitions from "../components/loading-page-animations/loading-page-transitions/LoadingPageTransitions.astro";
+import "../polyfills.js";
 
 interface Props {
   pageTitle: string;
@@ -21,43 +22,14 @@ const currentPage = Astro.url.pathname;
 <html lang="en" class="bg-[--color-secondary-lighter]">
   <head>
     <meta charset="UTF-8" />
-    <!-- TODO: update metadata + SEO -->
-    <!-- TODO: SEO optimization -->
-    <meta
-      name="description"
-      content="Khám phá cơ hội đầu tư đất đai với chúng tôi. Đối tác đáng tin cậy cho những dự án bất động sản chiến lược. Mở khóa tiềm năng của các bất động sản giá trị và bắt đầu hành trình đầu tư của bạn ngay hôm nay."
-    />
-    <meta property="og:title" content="VietLand - Đầu Tư Bất Động Sản" />
-    <meta
-      property="og:image"
-      content="https://images.ctfassets.net/2lc6rsj68vep/1cknc0YIwoJI3FhJtHXiP8/140e57b38253c0a579f7b9f0e6a7e92a/main-hero-min.jpg?h=250"
-    />
-    <meta
-      property="og:url"
-      content="https://deft-entremet-3bc804.netlify.app/"
-    />
+    <!-- Update metadata + SEO -->
+    <meta name="description" content="Discover real estate opportunities in Spokane, Washington with Ruslan, your trusted real estate agent. Unlock the potential of valuable properties and start your investment journey today." />
+    <meta property="og:title" content="Ruslan - Spokane Real Estate Agent" />
+    <meta property="og:image" content="https://example.com/ruslan-profile.jpg" />
+    <meta property="og:url" content="https://your-website.com/" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Preload images for main page -->
-    {
-      currentPage === "/" && (
-        <link
-          rel="preload"
-          as="image"
-          media="(min-width:1280px)"
-          imagesrcset="/img/main-hero_medium.jpg 1x, /img/main-hero_large.jpg 2x"
-        />
-      )
-    }
-    <link
-      rel="preload"
-      href="/fonts/signika-negative-v20-latin_latin-ext_vietnamese-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
-    <!-- <meta name="generator" content={Astro.generator} /> -->
+    <!-- Additional metadata and SEO tags -->
     <title>{pageTitle}</title>
   </head>
 

@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 import Hero from "../components/sections/hero/Hero.astro";
 import About from "../components/sections/about/About.astro";
 import LandPreviews from "../components/sections/land-previews/LandPreviews.astro";
+import ServiceAreas from "../components/ServiceAreas.jsx";
 
 import dataModel from "../model/ContentfulModel.js";
 const promotedLands = await dataModel.getPromotedLands();
@@ -13,11 +13,12 @@ const promotedLands = await dataModel.getPromotedLands();
   <Hero />
   <LandPreviews
     promotedLands={promotedLands}
-    heading="Dự án hiện tại"
-    subheading="Công ty giới thiệu mấy dự án đất đang bán với tỷ giá và diện tích các loại đang bán."
+    heading="Current Projects"
+    subheading="The company introduces several land projects for sale with various price rates and sizes."
     scrollEffect={true}
     fullHeight={true}
     gradient={true}
   />
   <About />
+  <ServiceAreas /> 
 </Layout>
