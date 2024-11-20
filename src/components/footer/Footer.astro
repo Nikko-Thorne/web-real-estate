@@ -19,47 +19,55 @@ import CallToAction from "./CallToAction.astro";
 
   <div class="bg-[--color-secondary-darkest]">
     <Container
-      className="grid grid-cols-1 gap-2 pb-16 md:grid-cols-2 lg:grid-cols-3 "
+      className="grid grid-cols-1 gap-2 pb-16 md:grid-cols-2 lg:grid-cols-3"
     >
-      <ColumnHeader text="Công ty" />
-      <Item type="link" href="/thong-tin">Thông tin</Item>
+      <!-- Company Section for Ruslan -->
+      <ColumnHeader text="Ruslan Realty" />
+      <Item type="link" href="/about">About Ruslan</Item>
       <Item
         type="button"
         id="callback-form-footer-btn"
         className="md:[grid-column:1/2] md:[grid-row:3/4]"
       >
-        Liên hệ
+        Contact
       </Item>
+
+      <!-- Property Search Section -->
       <ColumnHeader
-        text="đầu tư"
+        text="Properties"
         className="md:[grid-column:2/3] md:[grid-row:1/2]"
       />
-      <Item type="link" href="/tim-dat">Tìm kiếm đất</Item>
+      <Item type="link" href="/search">Find Properties</Item>
       <Item
         type="link"
-        href="/tim-dat?viewType=map"
+        href="/search?view=map"
         className="lg:[grid-column:2/3] lg:[grid-row:3/4]"
       >
-        Xem đất trên bản đồ
+        View on Map
       </Item>
+
+      <!-- Newsletter Subscription Section -->
       <ColumnHeader
-        text="Nhận ưu đãi mới qua email"
+        text="Get the Latest Deals by Email"
         className="mb-1.5 mt-4 md:mb-0 md:mt-0 lg:mb-1.5 lg:[grid-column:3/4] lg:[grid-row:1/2]"
       />
       <SubscriptionForm className="lg:row-span-2" />
+
+      <!-- Social Media Links -->
       <ColumnHeader
-        text="LIÊN KẾT"
+        text="CONNECT"
         className="mt-2 md:[grid-column:1/2] md:[grid-row:4/5] lg:mt-0 lg:[grid-column:3/4] lg:[grid-row:4/5]"
       />
       <SocialIcons
         positionClassName="-ml-1 [grid-column:1/2] md:[grid-row:5/6] lg:[grid-column:3/4] lg:[grid-row:5/6]"
         contacts={{
-          facebookRef: "#",
-          zaloRef: "#",
+          facebookRef: "https://facebook.com/ruslanrealty",
+          linkedinRef: "https://linkedin.com/in/ruslan",
+          zaloRef: "",
+          phoneRef: ""
         }}
       />
     </Container>
   </div>
-
   <Credits />
 </footer>

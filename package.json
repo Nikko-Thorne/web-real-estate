@@ -20,7 +20,7 @@
     "@types/react-dom": "^18.2.14",
     "@types/svelte-range-slider-pips": "^2.0.2",
     "astro": "^3.5.0",
-    "contentful": "^10.6.7",
+    "contentful": "^10.15.1",
     "gsap": "^3.12.2",
     "leaflet": "^1.9.4",
     "locomotive-scroll": "^5.0.0-beta.8",

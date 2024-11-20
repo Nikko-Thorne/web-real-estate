@@ -9,16 +9,7 @@ import dataModel from "../model/ContentfulModel.js";
 const promotedLands = await dataModel.getPromotedLands();
 ---
 
-<Layout pageTitle="Viet Land">
+<Layout pageTitle="Ruslan Shmidt">
   <Hero />
-  <LandPreviews
-    promotedLands={promotedLands}
-    heading="Current Projects"
-    subheading="The company introduces several land projects for sale with various price rates and sizes."
-    scrollEffect={true}
-    fullHeight={true}
-    gradient={true}
-  />
   <About />
-  <ServiceAreas /> 
 </Layout>

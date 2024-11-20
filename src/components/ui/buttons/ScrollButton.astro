@@ -7,15 +7,15 @@ type Props = {
   className?: string;
 };
 
-const { id, destinationElementId, ariaLabel, className, direction } =
-  Astro.props;
+const { id, destinationElementId, ariaLabel, className, direction } = Astro.props;
 ---
 
 <button
   id={id}
   aria-label={ariaLabel || "Go down to the next section"}
   data-destination-id={destinationElementId}
-  class={` z-index-[500] tabbable absolute bottom-10 right-0 mx-3 cursor-pointer  rounded-full bg-[--color-secondary-lighter] p-4 hover:text-white md:mx-16 ${
+  data-scroll-btn-id={id}
+  class={`z-index-[500] tabbable absolute bottom-10 right-0 mx-3 cursor-pointer rounded-full bg-[--color-secondary-lighter] p-4 hover:text-white md:mx-16 ${
     className ? className : ""
   }`}
 >
@@ -77,29 +77,33 @@ const { id, destinationElementId, ariaLabel, className, direction } =
   }
 </style>
 
-<!-- Handle Scroll Button clich -> scroll to the destination id -->
+<!-- Handle Scroll Button click -> scroll to the destination id -->
 <script>
   import initScroll from "../../../scripts/smoothScroll";
 
   const initScrollButton = () => {
-    const scrollBtnEl = document.querySelector(`#scroll-btn`);
+    const scrollBtnEl = document.querySelector(`[data-scroll-btn-id]`) as HTMLElement;
+    console.log('Scroll Button Element:', scrollBtnEl);
 
     if (!scrollBtnEl) return;
 
-    const destinationId = (scrollBtnEl as HTMLElement)?.dataset?.destinationId;
+    const destinationId = scrollBtnEl.dataset.destinationId;
+    console.log('Destination ID:', destinationId);
 
     if (!destinationId) return;
 
     const destinationEl = document.getElementById(destinationId);
+    console.log('Destination Element:', destinationEl);
 
     if (!destinationEl) return;
 
-    const smoothScroll = initScroll(); // Get or init existing instance of the smooth scroll, if returns null, then use the default scroll
+    const smoothScroll = initScroll();
+    console.log('Smooth Scroll Instance:', smoothScroll);
 
     const handleScrollBtnClick = () => {
+      console.log('Scroll Button Clicked');
       if (smoothScroll) {
-        const deltaY =
-          window.innerHeight - destinationEl.getBoundingClientRect().top;
+        const deltaY = window.innerHeight - destinationEl.getBoundingClientRect().top;
 
         smoothScroll.scrollTo(destinationEl, {
           duration: 1.4 * (1 - deltaY / window.innerHeight),
@@ -107,9 +111,7 @@ const { id, destinationElementId, ariaLabel, className, direction } =
             return 1 - Math.pow(1 - t, 4);
           },
         });
-      }
-
-      if (!smoothScroll) {
+      } else {
         destinationEl.scrollIntoView({ behavior: "smooth" });
       }
     };
@@ -117,5 +119,5 @@ const { id, destinationElementId, ariaLabel, className, direction } =
     scrollBtnEl.addEventListener("click", handleScrollBtnClick);
   };
 
-  initScrollButton();
+  document.addEventListener('DOMContentLoaded', initScrollButton);
 </script>
