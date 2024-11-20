@@ -8,10 +8,10 @@ export const navigationPages = [
   },
   {
     title: "Property Search",
-    href: "/property-search",
+    href: "https://ruslanshmidt.exprealty.com/index.php",
   },
   {
-    title: "About Us",
+    title: "About",
     href: "/about",
   },
 ];

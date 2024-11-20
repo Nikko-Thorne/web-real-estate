@@ -1,62 +1,77 @@
 ---
-import Facebook from "./icons/Facebook.astro";
-import Zalo from "./icons/Zalo.astro";
-import Phone from "./icons/Phone.astro";
-
-interface Props {
-  className?: string;
+type Props = {
   positionClassName?: string;
   contacts: {
     facebookRef?: string;
+    linkedinRef?: string;
     zaloRef?: string;
     phoneRef?: string;
   };
-}
+};
 
-const {
-  className,
-  positionClassName,
-  contacts: { facebookRef, zaloRef, phoneRef },
-} = Astro.props;
-
-const iconClassName =
-  "tabbable block rounded-full text-[--color-grey-light]  transition-opacity duration-150  " +
-  `${
-    className
-      ? className
-      : "h-7 w-7 opacity-20 hover:opacity-60 md:h-10 md:w-10 lg:h-9 lg:w-9"
-  }`;
+const { positionClassName, contacts } = Astro.props;
 ---
 
-<div
-  class=`flex items-center gap-1.5 ${positionClassName ? positionClassName : ""}`
->
-  {
-    phoneRef && (
-      <button onclick={`location.href='tel:${phoneRef}'`} class={iconClassName}>
-        <Phone />
-      </button>
-    )
-  }
-
-  {
-    facebookRef && (
-      <a
-        href={facebookRef}
-        target="_blank"
-        rel="noopener"
-        class={iconClassName}
+<div class={`social-icons ${positionClassName ? positionClassName : ""}`}>
+  {contacts.facebookRef && (
+    <a href={contacts.facebookRef} target="_blank" rel="noopener noreferrer" class="social-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        stroke="none"
+        class="h-5 w-5"
       >
-        <Facebook />
-      </a>
-    )
+        <path d="M22.675 0h-21.35C.596 0 0 .596 0 1.325v21.351C0 23.404.596 24 1.325 24H12.82V14.708H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.66-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.919.001c-1.504 0-1.794.715-1.794 1.763v2.308h3.587l-.467 3.622h-3.12V24h6.116C23.404 24 24 23.404 24 22.675V1.325C24 .596 23.404 0 22.675 0z" />
+      </svg>
+    </a>
+  )}
+
+  {contacts.linkedinRef && (
+    <a href={contacts.linkedinRef} target="_blank" rel="noopener noreferrer" class="social-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        stroke="none"
+        class="h-5 w-5"
+      >
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.942v5.664H9.35V9.002h3.415v1.561h.049c.476-.9 1.637-1.852 3.367-1.852 3.598 0 4.262 2.367 4.262 5.455v6.286zM5.337 7.433c-1.144 0-2.068-.926-2.068-2.068 0-1.142.925-2.068 2.068-2.068 1.144 0 2.068.925 2.068 2.068 0 1.142-.925 2.068-2.068 2.068zM6.542 20.452H4.132V9.002h2.41v11.45zM22.225 0H1.771C.792 0 .001.79.001 1.77v20.451C.001 23.21.792 24 1.771 24h20.451c.98 0 1.771-.79 1.771-1.77V1.77C23.997.79 23.205 0 22.225 0z"/>
+      </svg>
+    </a>
+  )}
+
+  {contacts.zaloRef && (
+    <a href={contacts.zaloRef} target="_blank" rel="noopener noreferrer" class="social-icon">
+      <!-- Add Zalo SVG here -->
+    </a>
+  )}
+
+  {contacts.phoneRef && (
+    <a href={`tel:${contacts.phoneRef}`} class="social-icon">
+      <!-- Add Phone SVG here -->
+    </a>
+  )}
+</div>
+
+<style>
+  .social-icons {
+    display: flex;
+    gap: 10px;
   }
 
-  {
-    zaloRef && (
-      <a href={zaloRef} target="_blank" rel="noopener" class={iconClassName}>
-        <Zalo />
-      </a>
-    )
+  .social-icon {
+    display: inline-block;
+    color: #000;
+    transition: color 0.3s;
   }
-</div>
+
+  .social-icon:hover {
+    color: #0077b5; /* LinkedIn blue */
+  }
+
+  svg.h-5.w-5 {
+    width: 24px;
+    height: 24px;
+  }
+</style>
