@@ -1,1 +1,63 @@
-```astro
+---
+// TypeScript isn't needed directly in `.astro` files unless you're calling TS utilities.
+export interface Props {
+  name: string;
+  yearsOfExperience: number;
+  headline: string;
+  bulletPoints: string[];
+  contactLink: string;
+}
+const props: Props = {
+  name: "Ruslan Shmidt",
+  yearsOfExperience: 10,
+  headline: "Your trusted partner in real estate",
+  bulletPoints: [
+    "Proven track record of successful transactions",
+    "In-depth knowledge of local market trends",
+    "Personalized approach tailored to each client’s needs",
+    "Committed to making your real estate journey stress-free",
+  ],
+  contactLink: "/contact",
+};
+---
+
+<div class="font-sans max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
+  <!-- Header -->
+  <header class="text-center mb-8">
+    <h1 class="text-4xl font-semibold text-gray-800">Meet {props.name}</h1>
+    <p class="text-lg text-gray-600 mt-2">{props.headline}</p>
+  </header>
+
+  <!-- Introduction -->
+  <section class="text-gray-700 leading-relaxed">
+    <p>
+      Hi, my name is <strong>{props.name}</strong>, a dedicated real estate agent with
+      over <strong>{props.yearsOfExperience} years of experience</strong> in the property
+      market. My mission is to help clients navigate the exciting yet complex
+      world of buying, selling, or investing in real estate.
+    </p>
+  </section>
+
+  <!-- Why Choose Me Section -->
+  <section class="mt-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Why Choose Me?</h2>
+    <ul class="list-disc list-inside space-y-2 text-gray-700">
+      {props.bulletPoints.map((point) => (
+        <li>{point}</li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-10 text-center">
+    <p class="text-gray-600">
+      Ready to take the next step? Contact me today!
+    </p>
+    <a
+      href={props.contactLink}
+      class="inline-block mt-4 px-6 py-2 bg-blue-600 text-white text-lg font-medium rounded-md shadow-md hover:bg-blue-700"
+    >
+      Get in Touch
+    </a>
+  </footer>
+</div

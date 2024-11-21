@@ -2,19 +2,10 @@ import React from 'react';
 import '../styles/serviceAreas.css';
 
 const serviceAreas = [
-  'Addy', 'Airway Heights', 'Bayview', 'Chattaroy', 'Cheney', 'Chewelah', 
-  'Clarkston', 'Clayton', 'Coeur D Alene', 'Colbert', 'Colfax', 'Colville', 
-  'Creston', 'Curlew', 'Cusick', 'Davenport', 'Deer Meadows', 'Deer Park', 
-  'Edwall', 'Elk', 'Endicott', 'Evans', 'Fairfield', 'Ford', 'Fruitland', 
-  'Gifford', 'Greenacres', 'Harrington', 'Harrison', 'Hayden', 'Hope', 
-  'Hunters', 'Inchelium', 'Ione', 'Kettle Falls', 'Kingston', 'Latah', 
-  'Lincoln', 'Mabton', 'Malden', 'Marcus', 'Mead', 'Metaline Falls', 'Mica', 
-  'Millwood', 'Newport', 'Nine Mile Falls', 'Nordman', 'Northport', 
-  'Oakesdale', 'Odessa', 'Oldtown', 'Otis Orchards', 'Plummer', 'Pomeroy', 
-  'Post Falls', 'Priest River', 'Reardan', 'Republic', 'Rice', 'Ritzville', 
-  'Rockford', 'Rosalia', 'Sagle', 'Saint Maries', 'Seven Bays', 'Spangle', 
-  'Spokane', 'Spokane Valley', 'Sprague', 'Springdale', 'St John', 'Tekoa', 
-  'Tumtum', 'Usk', 'Valley', 'Valleyford', 'Veradale', 'Wilbur', 'Worley'
+ 'Airway Heights', 'Chattaroy', 'Cheney', 'Clayton', 'Colbert', 'Deer Park', 
+'Edwall', 'Elk', 'Fairfield', 'Greenacres', 'Latah', 'Mead', 'Mica', 
+'Millwood', 'Nine Mile Falls', 'Otis Orchards', 'Rockford', 'Spangle', 
+'Spokane', 'Spokane Valley', 'Tumtum', 'Valleyford', 'Veradale'
 ];
 
 const ServiceAreas = () => {
