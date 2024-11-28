@@ -2,28 +2,41 @@
 import Layout from "../layouts/Layout.astro";
 import Gallery from "../components/sections/gallery/Gallery.astro";
 import LandInfo from "../components/sections/land-info/LandInfo.astro";
-
-import type { GetStaticPaths } from "astro";
-
-import dataModel from "../model/ContentfulModel";
-import type { Land } from "../model/Land";
 import Container from "../layouts/Container.astro";
 import LandPreviews from "../components/sections/land-previews/LandPreviews.astro";
 
-// Generate separate page for each of the land items
-export const getStaticPaths = (async () => {
-  const lands = await dataModel.getAllLands();
+import type { GetStaticPaths } from "astro";
 
-  return lands.map((land) => ({
-    params: { slug: land.slug }, // slug is used as path in [slug].astro
-    props: { land: land }, // data to use for page generation
+const mockLands = [
+  {
+    slug: "example-land-1",
+    title: "Example Land 1",
+    tag: "Popular",
+    images: [{ src: "/path/to/image1.jpg", kind: "image", title: "Image 1", url: "/path/to/image1.jpg", originalSize: "1024x768", type: "image/jpeg" }],
+    videos: [],
+    suggestedLands: ["example-land-2"],
+  },
+  {
+    slug: "example-land-2",
+    title: "Example Land 2",
+    tag: "New",
+    images: [{ src: "/path/to/image2.jpg", kind: "image", title: "Image 2", url: "/path/to/image2.jpg", originalSize: "1024x768", type: "image/jpeg" }],
+    videos: [],
+    suggestedLands: [],
+  },
+];
+
+export const getStaticPaths = () => {
+  return mockLands.map((land) => ({
+    params: { slug: land.slug },
+    props: { land },
   }));
-}) satisfies GetStaticPaths;
+};
 
-const land: Land = Astro.props.land;
+const land = Astro.props.land;
 
 const suggestedLands = land.suggestedLands
-  ? await dataModel.getLandsBySlugs(land.suggestedLands)
+  ? mockLands.filter((l) => land.suggestedLands.includes(l.slug))
   : [];
 ---
 
@@ -42,11 +55,4 @@ const suggestedLands = land.suggestedLands
   {
     suggestedLands.length > 0 && (
       <LandPreviews
-        promotedLands={suggestedLands}
-        heading="Dự án tưởng tượng"
-        subheading="Công ty giới thiệu mấy dự án đất đang bán với tỷ giá và diện tích các loại đang bán."
-        fullHeight={true}
-      />
-    )
-  }
-</Layout>
+        promotedLands={suggested
