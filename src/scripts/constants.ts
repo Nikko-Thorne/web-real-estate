@@ -1,7 +1,7 @@
 export const navigationPages = [
   {
     title: "Home",
-    href: "/",
+    href: "https://ruslanshmidt.exprealty.com/index.php",
   },
   {
     title: "Property Search",
@@ -9,4 +9,4 @@ export const navigationPages = [
   },
 ];
 
-export const COMPANY_PHONE_NUMBER = "(123) 456-7890"; 
+export const COMPANY_PHONE_NUMBER = "(509) 873-9464"; 

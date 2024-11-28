@@ -1,17 +1,13 @@
 ---
+// Import necessary components
 import Container from "../../layouts/Container.astro";
-import LogoSmall from "../logo/LogoSmall.astro";
-import ButtonAnimated from "../ui/buttons/ButtonAnimated.astro";
+import BackgroundImage from "./BackgroundImage.astro";
+import CallToAction from "./CallToAction.astro";
 import ColumnHeader from "./ColumnHeader.astro";
 import SocialIcons from "../ui/social-icons/SocialIcons.astro";
-import SubscriptionForm from "./SubscriptionForm.astro";
 import Item from "./Item.astro";
-import BackgroundImage from "./BackgroundImage.astro";
 import Credits from "./Credits.astro";
-import CallToAction from "./CallToAction.astro";
 ---
-
-<!-- Footer component markup -->
 <footer class="grid w-full grid-cols-1 grid-rows-[1fr,min,min]">
   <BackgroundImage />
 
@@ -19,55 +15,43 @@ import CallToAction from "./CallToAction.astro";
 
   <div class="bg-[--color-secondary-darkest]">
     <Container
-      className="grid grid-cols-1 gap-2 pb-16 md:grid-cols-2 lg:grid-cols-3"
+      className="grid grid-cols-1 gap-6 py-8 md:grid-cols-2 lg:grid-cols-3"
     >
-      <!-- Company Section for Ruslan -->
-      <ColumnHeader text="Ruslan Real Estate Agent" />
-      <Item type="link" href="https://ruslanshmidt.exprealty.com/index.php">About Ruslan</Item>
-      <Item
-        type="button"
-        id="callback-form-footer-btn"
-        className="md:[grid-column:1/2] md:[grid-row:3/4]"
-      >
-        Contact
-      </Item>
+      <!-- Company Section -->
+      <section class="md:[grid-column:1/2] md:[grid-row:1/2]">
+        <ColumnHeader text="Ruslan Real Estate Agent" />
+        <Item type="link" href="https://ruslanshmidt.exprealty.com/index.php">
+        Contact        
+        </Item>
+      </section>
 
       <!-- Property Search Section -->
-      <ColumnHeader
-        text="Properties"
-        className="md:[grid-column:2/3] md:[grid-row:1/2]"
-      />
-      <Item type="link" href="https://ruslanshmidt.exprealty.com/index.php">Find Properties</Item>
-      <Item
-        type="link"
-        href="https://ruslanshmidt.exprealty.com/index.php"
-        className="lg:[grid-column:2/3] lg:[grid-row:3/4]"
-      >
-        View on Map
-      </Item>
+      <section class="md:[grid-column:2/3] md:[grid-row:1/2]">
+        <ColumnHeader text="Properties" />
+        <Item type="link" href="https://ruslanshmidt.exprealty.com/index.php">
+          Find Properties
+        </Item>
+        <Item type="link" href="https://ruslanshmidt.exprealty.com/index.php" className="mt-2">
+          View on Map
+        </Item>
+      </section>
 
-      <!-- Newsletter Subscription Section -->
-      <ColumnHeader
-        text="Get the Latest Deals by Email"
-        className="mb-1.5 mt-4 md:mb-0 md:mt-0 lg:mb-1.5 lg:[grid-column:3/4] lg:[grid-row:1/2]"
-      />
-      <SubscriptionForm className="lg:row-span-2" />
-
-      <!-- Social Media Links -->
-      <ColumnHeader
-        text="CONNECT"
-        className="mt-2 md:[grid-column:1/2] md:[grid-row:4/5] lg:mt-0 lg:[grid-column:3/4] lg:[grid-row:4/5]"
-      />
-      <SocialIcons
-        positionClassName="-ml-1 [grid-column:1/2] md:[grid-row:5/6] lg:[grid-column:3/4] lg:[grid-row:5/6]"
-        contacts={{
-          facebookRef: "https://facebook.com/ruslan.shmidt.1",
-          linkedinRef: "https://www.linkedin.com/in/ruslan-shmidt-2a94b42a4/",
-          zaloRef: "",
-          phoneRef: ""
-        }}
-      />
+      <!-- Social Media Links (Connect Section) -->
+      <section class="md:[grid-column:3/4] md:[grid-row:1/2]">
+        <ColumnHeader text="Connect" />
+        <SocialIcons
+          positionClassName="-ml-1"
+          contacts={{
+            facebookRef: "https://www.facebook.com/profile.php?id=100069804642843",
+            linkedinRef: "https://www.linkedin.com/in/ruslan-shmidt-2a94b42a4/",
+            zaloRef: "",
+            phoneRef: ""
+          }}
+        />
+      </section>
     </Container>
   </div>
+
+  <!-- Credits Section -->
   <Credits />
 </footer>
