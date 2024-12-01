@@ -6,5 +6,6 @@
   },
   "exclude": [
     "src/pages/index.astro",
+    "src/pages/[slug].astro"
   ]
 }
