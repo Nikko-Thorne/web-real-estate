@@ -46,7 +46,7 @@ const RealEstateAdFunnel = () => {
               </label>
             </p>
             {/* reCAPTCHA widget */}
-            <div data-netlify-recaptcha="true"></div>
+            <div data-netlify-recaptcha="true" />
             <p>
               <button type="submit">Sign Up Now</button>
             </p>
