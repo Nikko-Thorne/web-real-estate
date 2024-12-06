@@ -1,54 +1,54 @@
-<!-- Background image container -->
 <div
-  class="bg-image-lazy z-0 h-full w-full [grid-column:1/2] [grid-row:1/2]"
-  data-load="false"
+  class="absolute left-0 top-0 h-full w-full select-none overflow-hidden"
+  data-scroll
+  data-scroll-speed="-.2"
 >
-</div>
-<!-- Gradient overlay -->
-<div
-  class="z-10 h-full w-full bg-gradient-to-t from-[--color-secondary-darkest] to-[#405273DD] [grid-column:1/2] [grid-row:1/2]"
->
+  <div class="bg-hero-image">
+    <!-- Image overlays -->
+    <div
+      class="absolute left-0 top-0 h-full w-full select-none bg-blue-400 opacity-10"
+    >
+    </div>
+    <div
+      class="absolute left-0 top-0 h-full w-full select-none bg-white opacity-30 md:opacity-10"
+    >
+    </div>
+  </div>
 </div>
 
+<!-- Position hero image on the page and apply responsive src loading -->
 <style lang="sass">
-  // $img: "/img/footer.jpg?"
-  $img: "https://images.ctfassets.net/2lc6rsj68vep/s1n2ZOawBGsBTzS7r1Hzb/2308aceb48c276fdc2d94a68d3c9e7c1/footer-min.jpg?q=100&fm=webp"
+  // Image src
+  $image--portrait: "/img/main-hero__portrait-min.webp"
 
-  .bg-image-lazy[data-load="true"]
+  $image: "/img/main-hero" // public folder
+
+  // Portrait mode (for mobile devices)
+  .bg-hero-image
     background-size: cover
     width: 100%
     height: 100%
-    background-position: center top
-    background-image: url($img + "&w=1200")
-    @media (min-width: 768px)
-      background-image: url($img + "&w=800")
-    @media (min-width: 1024px)
-      background-image: url($img + "&w=1200")
-    @media (min-width: 1280px)
-      background-image: url($img + "&w=1600")
+    background-position: center bottom
+    background-image: url("#{$image--portrait}?w=768")
+    will-change: transform
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2)
+    .bg-hero-image
+      background-image: url("#{$image--portrait}?w=1536")
+
+  // Landscape mode
+  @media (orientation: landscape) and (min-width: 768px)
+    .bg-hero-image
+      background-position: center center
+      width: 100%
+      height: 100%
+      background-image: url("#{$image}_small.jpg")
+
+  @media (orientation: landscape) and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), (orientation: landscape) and (min-width: 1280px)
+    .bg-hero-image
+      background-image: url("#{$image}_medium.jpg")
+
+  @media (orientation: landscape) and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1500px)
+    .bg-hero-image
+      background-image: url("#{$image}_large.jpg")
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const lazyBackgrounds = [].slice.call(
-      document.querySelectorAll(".bg-image-lazy"),
-    );
-
-    if ("IntersectionObserver" in window) {
-      let lazyBackgroundObverver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.setAttribute("data-load", "true");
-              lazyBackgroundObverver.unobserve(entry.target);
-            }
-          });
-        },
-      );
-
-      lazyBackgrounds.forEach((lazyBackground) => {
-        lazyBackgroundObverver.observe(lazyBackground);
-      });
-    }
-  });
-</script>
