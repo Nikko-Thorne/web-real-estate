@@ -4,8 +4,12 @@
 }
 
 .spinner-circle {
-opacity: 0;
+    stroke: var(--color-accent, #000);
+    stroke-dasharray: 192.617;
+    stroke-dashoffset: 192.617; /* Adjust the initial value */
+    transition: stroke-dashoffset 0.2s ease;
 }
+
 </style>
 
 <div
@@ -69,7 +73,6 @@ opacity: 0;
       ></path>
     </svg>
   </div>
-</div>
 
 <!-- Initial loading spinner and logo animations -->
 <style lang="sass">
@@ -86,10 +89,17 @@ opacity: 0;
   .loader-spinner
     animation-delay: .2s
 
-  @keyframes moveUp
-    from
-      opacity: 0
-      transform: translate3d(0,800px,0)
+    @keyframes moveUp 
+      from 
+          opacity: 0
+          transform: translate3d(0, 100px, 0)
+      
+      to 
+          opacity: 1
+          transform: translate3d(0, 0, 0)
+    
+  
+  
 
   // 2. Animate logo out on loading end
   .logo-path-1
@@ -193,15 +203,17 @@ const loadingProgressState = {
   hasLoaded: false,
 };
 
+let circlePathLength; // Define the variable in a broader scope
+
 // Query spinner element
-const spinner = document.getElementById("spinner-circle"); // as HTMLElement &
-SVGPathElement;
+const spinner = document.getElementById("spinner-circle"); // as HTMLElement & SVGPathElement
 const spinnerContainer = document.querySelector(".loader-header"); // as HTMLElement;
 
-// Set up initial circle path length
-const circlePathLength = spinner?.getTotalLength();
-spinner.style.strokeDasharray = circlePathLength + "";
-spinner.style.strokeDashoffset = circlePathLength + "";
+if (spinner) {
+    circlePathLength = spinner.getTotalLength(); // Initialize the variable
+    spinner.style.strokeDasharray = circlePathLength + '';
+    spinner.style.strokeDashoffset = circlePathLength + '';
+}
 
 // Allow to re-render spinner progress
 const renderSpinnerCircle = (progress) => {
@@ -215,20 +227,18 @@ const progressEstimated = () => {
     // If the page has really loaded stop the loading animation
     if (loadingProgressState.hasLoaded) {
       spinnerContainer.setAttribute("data-loaded", "true");
-
       document.body.setAttribute("data-loaded", "true");
 
-      // Clear loding-screen related styles not to meddle with other animations
+      // Clear loading-screen related styles not to meddle with other animations
       setTimeout(() => {
         document.body.removeAttribute("data-loaded");
-
         spinnerContainer.style.visibility = "hidden";
       }, 1300);
 
       clearInterval(interval);
     }
 
-    // Pretend that we has calculated loading time
+    // Pretend that we have calculated loading time
     loadingProgressState.progress += Math.random() * 0.1;
 
     if (loadingProgressState.progress >= 0.8) {
