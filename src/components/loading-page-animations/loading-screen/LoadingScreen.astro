@@ -89,6 +89,20 @@
   .loader-spinner
     animation-delay: .2s
 
+    .loader-header 
+      width: 100%
+      height: 100vh
+      position: fixed
+      top: 0
+      left: 0
+      z-index: 1000
+      background: rgba(0, 0, 0, 0.5)
+      backdrop-filter: blur(10px)
+      display: flex
+      justify-content: center
+      align-items: center
+    
+
     @keyframes moveUp 
       from 
           opacity: 0
@@ -194,6 +208,10 @@
     from
       opacity: 0
       transform: translate3d(0,200px,0)
+
+
+    
+    
 </style>
 
 <!-- Listen to loading events and hide loading screen -->
@@ -256,11 +274,14 @@ window.addEventListener("load", () => {
 
 // Wait until initial animation is finished and then start loading
 spinnerContainer.addEventListener(
-  "animationend",
-  () => {
-    // Start loading
-    progressEstimated();
-  },
-  { once: true }
+    "animationend",
+    () => {
+        progressEstimated();
+        setTimeout(() => {
+            spinnerContainer.style.visibility = "hidden"; // Avoid layout shifts
+        }, 1300);
+    },
+    { once: true }
 );
+
 </script>
