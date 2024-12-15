@@ -52,6 +52,13 @@ const RealEstateAdFunnel = () => {
             </p>
           </form>
         )}
+        <img
+          alt="Contact Ruslan"
+          src="/vectors/mail.svg"
+          className="h-full w-full object-cover object-[52%_20%] md:object-center"
+          width="desired-width"
+          height="desired-height"
+        />
       </section>
     </div>
   );
